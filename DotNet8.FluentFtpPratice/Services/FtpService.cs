@@ -44,6 +44,25 @@ namespace DotNet8.FluentFtpPratice.Services
                 throw;
             }
         }
+        public async Task<bool> CreateDirectoryAsync(string directory)
+        {
+            try
+            {
+                var token = new CancellationToken();
+                await _ftp.Connect(token);
+
+                return await _ftp.CreateDirectory(directory,true,token);
+            }
+            catch(Exception ex)
+            {
+                if(ex.InnerException is not null)
+                {
+                    Console.WriteLine(ex.InnerException);
+                }
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
         public async Task UploadFileAsync(IFormFile file, string directory)
         {
             var tempFilePath = Path.GetTempFileName();
