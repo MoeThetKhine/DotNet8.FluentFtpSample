@@ -2,5 +2,6 @@
 {
     public class BlogRequestModel
     {
+        public IFormFile File { get; set; }
     }
 }
