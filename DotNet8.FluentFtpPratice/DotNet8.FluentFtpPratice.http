@@ -1,0 +1,6 @@
+@DotNet8.FluentFtpPratice_HostAddress = http://localhost:5142
+
+GET {{DotNet8.FluentFtpPratice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
