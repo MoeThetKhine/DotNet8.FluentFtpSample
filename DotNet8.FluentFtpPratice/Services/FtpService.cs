@@ -85,5 +85,25 @@ namespace DotNet8.FluentFtpPratice.Services
                 }
             }
         }
+        public async Task DeleteFileAsync(string filePath)
+        {
+            try
+            {
+                var token = new CancellationToken();
+                await _ftp.Connect(token);
+
+                await _ftp.DeleteFile(filePath);
+                Console.WriteLine("File Deleted Successfully!");
+            }
+            catch(Exception ex)
+            {
+
+                if(ex.InnerException is not null)
+                {
+                    Console.WriteLine(ex.InnerException.Message);
+                }
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
