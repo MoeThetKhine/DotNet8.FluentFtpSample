@@ -120,6 +120,8 @@ public class FtpService
 
     #endregion
 
+    #region DeleteFileAsync
+
     public async Task DeleteFileAsync(string filePath)
     {
         try
@@ -141,4 +143,5 @@ public class FtpService
         }
     }
 
+    #endregion
 }
