@@ -58,6 +58,18 @@ namespace DotNet8.FluentFtpPratice.Controller
             }
         }
 
-       
+        [HttpDelete]
+        public async Task<IActionResult> DeleteFile()
+        {
+            try
+            {
+                await _ftpService.DeleteFileAsync("/Pictures/wp11.jfif");
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
