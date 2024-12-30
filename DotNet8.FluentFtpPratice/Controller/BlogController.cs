@@ -1,8 +1,4 @@
-﻿using DotNet8.FluentFtpPratice.Model;
-using DotNet8.FluentFtpPratice.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
+﻿
 namespace DotNet8.FluentFtpPratice.Controller
 {
     [Route("api/[controller]")]
