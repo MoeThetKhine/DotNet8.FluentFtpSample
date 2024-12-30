@@ -74,6 +74,8 @@ public class FtpService
 
     #endregion
 
+    #region UploadFileAsync
+
     public async Task UploadFileAsync(IFormFile file, string directory)
     {
         var tempFilePath = Path.GetTempFileName();
@@ -115,6 +117,8 @@ public class FtpService
             }
         }
     }
+
+    #endregion
 
     public async Task DeleteFileAsync(string filePath)
     {
