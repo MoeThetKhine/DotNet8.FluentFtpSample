@@ -31,6 +31,7 @@ public class FtpService
 
     #endregion
 
+    #region CheckDirectoryExistsAsync
 
     public async Task<bool> CheckDirectoryExistsAsync(string directory)
     {
@@ -46,6 +47,9 @@ public class FtpService
             throw;
         }
     }
+
+    #endregion
+
     public async Task<bool> CreateDirectoryAsync(string directory)
     {
         try
