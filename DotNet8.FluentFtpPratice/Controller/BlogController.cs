@@ -11,6 +11,8 @@ public class BlogController : ControllerBase
         _ftpService = ftpService;
     }
 
+    #region CheckDirectoryExists
+
     [HttpGet]
     public async Task<IActionResult>CheckDirectoryExists(string directory)
     {
@@ -24,6 +26,8 @@ public class BlogController : ControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    #endregion
 
     [HttpPost]
     public async Task<IActionResult> CreateDirectory(string directory)
