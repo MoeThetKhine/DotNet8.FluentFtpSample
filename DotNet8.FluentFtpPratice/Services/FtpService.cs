@@ -63,5 +63,47 @@ namespace DotNet8.FluentFtpPratice.Services
             }
         }
 
+        public async Task UploadFileAsync(IFormFile file, string directory)
+        {
+            var tempFilePath = Path.GetTempFileName();
+
+            try
+            {
+                using (var stream = new FileStream(tempFilePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                var token = new CancellationToken();
+                await _ftp.Connect(token);
+                Console.WriteLine("Connected to FTP server.");
+
+                await _ftp.CreateDirectory(directory, token);
+                Console.WriteLine($"Remote directory'{directory}' checked/created.");
+
+                var remoteFilePath = Path.Combine(directory, file.FileName).Replace("\\", "/");
+
+                var success = await _ftp.UploadFile(tempFilePath, remoteFilePath, token: token);
+
+                Console.WriteLine("File Uploaded Successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception:{ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Inner Exception:{ex.InnerException.Message}");
+                }
+                throw;
+            }
+            finally
+            {
+                if (File.Exists(tempFilePath))
+                {
+                    File.Delete(tempFilePath);
+                    Console.WriteLine("Temporary file deleted.");
+                }
+            }
+        }
+
     }
 }
