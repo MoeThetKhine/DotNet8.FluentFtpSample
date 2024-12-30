@@ -44,6 +44,20 @@ namespace DotNet8.FluentFtpPratice.Controller
             }
         }
 
-      
+        [HttpPost("UploadFile")]
+        public async Task<IActionResult> UploadFile([FromForm]BlogRequestModel requestModel)
+        {
+            try
+            {
+                await _ftpService.UploadFileAsync(requestModel.File, "testing");
+                return Ok(requestModel);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+       
     }
 }
