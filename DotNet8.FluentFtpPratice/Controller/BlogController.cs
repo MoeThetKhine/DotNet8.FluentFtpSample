@@ -29,6 +29,8 @@ public class BlogController : ControllerBase
 
     #endregion
 
+    #region CreateDirectory
+
     [HttpPost]
     public async Task<IActionResult> CreateDirectory(string directory)
     {
@@ -42,6 +44,8 @@ public class BlogController : ControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    #endregion
 
     [HttpPost("UploadFile")]
     public async Task<IActionResult> UploadFile([FromForm]BlogRequestModel requestModel)
