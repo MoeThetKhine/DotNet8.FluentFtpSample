@@ -29,7 +29,20 @@ namespace DotNet8.FluentFtpPratice.Services
             var token = new CancellationToken();
             await _ftp.Connect(token);
         }
+        public async Task<bool> CheckDirectoryExistsAsync(string directory)
+        {
+            try
+            {
+                var token = new CancellationToken();
+                await _ftp.Connect(token);
+                return await _ftp.DirectoryExists(directory, token);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
 
-      
     }
 }
