@@ -47,6 +47,8 @@ public class BlogController : ControllerBase
 
     #endregion
 
+    #region UploadFile
+
     [HttpPost("UploadFile")]
     public async Task<IActionResult> UploadFile([FromForm]BlogRequestModel requestModel)
     {
@@ -60,6 +62,8 @@ public class BlogController : ControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    #endregion
 
     [HttpDelete]
     public async Task<IActionResult> DeleteFile()
