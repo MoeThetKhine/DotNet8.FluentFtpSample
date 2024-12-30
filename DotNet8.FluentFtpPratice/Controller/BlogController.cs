@@ -65,6 +65,8 @@ public class BlogController : ControllerBase
 
     #endregion
 
+    #region DeleteFile
+
     [HttpDelete]
     public async Task<IActionResult> DeleteFile()
     {
@@ -78,4 +80,6 @@ public class BlogController : ControllerBase
             throw new Exception(ex.Message);
         }
     }
+
+    #endregion
 }
