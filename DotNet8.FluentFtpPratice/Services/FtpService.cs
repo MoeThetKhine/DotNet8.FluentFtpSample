@@ -145,8 +145,4 @@ public class FtpService
 
     #endregion
 
-
-
-
-
 }
